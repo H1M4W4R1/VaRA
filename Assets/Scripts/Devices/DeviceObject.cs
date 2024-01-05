@@ -1,6 +1,7 @@
 using Devices.Communication;
 using Devices.Properties;
 using Devices.Properties.Blindfold;
+using Devices.Properties.Configuration;
 using Devices.Properties.Hands.Left;
 using Devices.Properties.Hands.Right;
 using Devices.Properties.HMD;
@@ -53,18 +54,22 @@ namespace Devices
             UnitySerialPort.SerialDataParseEvent += DataParsedEvent;
 
             // Load all properties
+
+            // Blindfold
             Register(new BlindfoldActiveProperty());
             Register(new BlindfoldColorProperty());
 
+            // Positioning
             Register(new LeftHandPositionProperty());
             Register(new RightHandPositionProperty());
-
+                        
             Register(new LeftHandRotationProperty());
             Register(new RightHandRotationProperty());
 
             Register(new HMDPositionProperty());    
             Register(new HMDRotationProperty());
 
+            // Locking
             Register(new LeftHandLockActiveProperty());
             Register(new RightHandLockActiveProperty());
             Register(new HMDLockActiveProperty());
@@ -84,6 +89,10 @@ namespace Devices
             Register(new LeftHandLockDistanceProperty());
             Register(new RightHandLockDistanceProperty());
             Register(new HMDLockDistanceProperty());
+
+            // Config
+            Register(new RoomOffsetProperty());
+            Register(new UserHeightProperty());
 
         }
 

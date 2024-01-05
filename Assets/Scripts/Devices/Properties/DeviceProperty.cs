@@ -7,7 +7,7 @@ namespace Devices.Properties
         private const string ERROR_UNKNOWN_COMMAND = "UNKNOWN_COMMAND"; // Command does not exist
         private const string ERROR_INVALID_COMMAND = "INVALID_COMMAND"; // Command is invalid (missing '=' or too many '=')
         private const string ERROR_NOT_IMPLEMENTED = "NOT_IMPLEMENTED"; // Command is not yet implemented (lazy dev detected)
-        private const string ERROR_NOT_SUPPORTED = "NOT_SUPPORTED"; // Command is not supported (intentionally)
+        protected const string ERROR_NOT_SUPPORTED = "NOT_SUPPORTED"; // Command is not supported (intentionally)
         public const string ERROR_INVALID_VALUE = "INVALID_VALUE"; // Command value is not valid
 
         public void OK() => Game.Instance.serialPort.SendSerialDataAsLine("OK");

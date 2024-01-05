@@ -4,7 +4,7 @@ VaRA is Unity3D Game Structure for T.O.S. gaming - mostly inspired by several 18
 This game structure is designed to create games and toys that are targeted to adult entertainment industry.
 
 # What is included in VaRA
-VaRA consist of structure that allows for easy game creation - it contains basic scene with XR Rig that has several mechanics already attached. More mechanics will be implemented in future based on user feedback.
+VaRA consist of structure that allows for easy game creation - it contains basic scene with XR Rig that has several mechanics related to explicit gaming already attached. More mechanics will be implemented in future based on user feedback.
 
 ## Currently supported mechanics
 ### Blindfold
@@ -19,12 +19,19 @@ Currently three types of controllers are supported: left hand, right hand and he
 
 # API Structure
 
-API is used to set-up device properties like HMD.POSITION. Property can be either GET/SET or both at once.  
+API is used to set-up device/game properties like `HMD.POSITION`. Property can be either GET/SET or both at once.  
 
 Property describes single settings that can be changed eg. color of object or its position.
 Property Identifier is name used to call this property using external COM port.
 
-API by default connects to `COM11`. This can be changed on 'Game' object in Core Scene.
+API by default connects to `COM11`. This can be changed on 'Game' object in Core Scene. It's planned to implement a custom handshake to connect with target device without having to hard-specify COM port.
+
+## Handshake protocol
+
+Handshake protocol will be described here after implenentation.
+```
+[PLACEHOLDER]
+```
 
 ## Usage
 Commands / properties can be changed via COM port (this API is designed primarily to cooperate with external devices).
@@ -71,14 +78,20 @@ This feature is intentionally not supported.
 #### `INVALID_VALUE`
 Value was invalid (usually too many/few values for vector/color)
 
+## Modules
+Modules are designed to make people contribute easily without conflicts. Module naming convention mismatches will result in Pull Request denials (no mess is allowed).
 
-## Extension
+It is designed to contain custom `Properties` and `Scenes` made by specific community member.
+
+### Properties
 To create custom property you need to extend `DeviceProperty` class and implement `ISettableDeviceProperty` or `IGettableDeviceProperty` (or both) interface(s).
 
 Also you will need to register this property in DeviceObject instance (you can get one using `DeviceObject.Get()`)
 
-## Modules
-Modules are designed to make people contribute easily without conflicts. Module naming convention mismatches will result in Pull Request denials (no mess is allowed).
+### Scenes
+You're allowed to create new scenes within your module. Remember to import Core Scene from `Assets/Scenes` to implement all basic mechanics. This allows for easy updates without having to reimport prefab into your scene (if it gets changed).
+
+Your scene needs to contain `Room` script (this script object will define scene play area and can be moved using `CONFIG.ROOM.OFFSET` property to match real-world room - noone likes walking right into wall right?)
 
 # Contribution
 If you want to contribute to VaRA feel free to issue a Pull Request, however please follow naming and structuring conventions for this project (otherwise your PR probably will be rejected)
@@ -111,6 +124,11 @@ It's allowed to hard-type things like brackets.
 Keep in mind that some countries had an [censored] who decided to use comma instead of dot as decimal point (he/she should burn in hell for that thing).
 
 Please use `F()` and `S()` methods on `string` and `float` types to parse it using InvariantCulture.
+
+There's also `V()` method to easily convert comma-separated list of floating strings into list of floats using `F()` method. Use `Count` property to get amount of elements in list.
+
+## External plugins / assets
+External assets are allowed only if its license is not violated by publishing them within this repository. `LICENSE` file should be included within asset / plugin folder. Otherwise Pull Request will be denied.
 
 ## If not mentioned
 Check core scripts and try to keep as close convention as possible. This document may be updated if new conventions are required.
@@ -157,3 +175,17 @@ Target position - move lock target in absolute world space.
 
 ##### Distance `*.*.*.DISTANCE` [GET/SET]
 Target distance - how far controller/hmd can be from object to be considered within range. Also scales rendered object.
+
+# Configuration `CONFIG`
+
+## User-Config `*.USER` [GROUP]
+Configurations related to user (player)
+
+### Height `*.*.HEIGHT` [GET, SET]
+Set user height for XR rig (aka. match real-world and in-game height for better experience)
+
+## Room-Config `*.ROOM` [GROUP]
+Configurations related to room (scene)
+
+### Offset `*.*.OFFSET` [GET, SET]
+Set room offset (to place scene are and real-world play area in desired locations).

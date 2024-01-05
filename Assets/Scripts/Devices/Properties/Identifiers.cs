@@ -2,6 +2,9 @@ using System.Text;
 
 public class Identifiers
 {
+    // Common
+    public const string CONFIG = "CONFIG";
+
     // XR RIG Parts
     public const string LEFT_HAND = "LEFT_HAND";
     public const string RIGHT_HAND = "RIGHT_HAND";
@@ -19,6 +22,12 @@ public class Identifiers
     public const string IS_OK = "IS_OK";
     public const string ACTIVE = "ACTIVE";
     public const string COLOR = "COLOR";
+
+    // Config properties
+    public const string HEIGHT = "HEIGHT";
+    public const string OFFSET = "OFFSET";
+    public const string USER = "USER";
+    public const string ROOM = "ROOM";
 
     public static string NewId(params string[] args)
     {
