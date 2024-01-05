@@ -176,16 +176,16 @@ Target position - move lock target in absolute world space.
 ##### Distance `*.*.*.DISTANCE` [GET/SET]
 Target distance - how far controller/hmd can be from object to be considered within range. Also scales rendered object.
 
-# Configuration `CONFIG`
+## Configuration `CONFIG`
 
-## User-Config `*.USER` [GROUP]
+### User-Config `*.USER` [GROUP]
 Configurations related to user (player)
 
-### Height `*.*.HEIGHT` [GET, SET]
+#### Height `*.*.HEIGHT` [GET, SET]
 Set user height for XR rig (aka. match real-world and in-game height for better experience)
 
-## Room-Config `*.ROOM` [GROUP]
+### Room-Config `*.ROOM` [GROUP]
 Configurations related to room (scene)
 
-### Offset `*.*.OFFSET` [GET, SET]
+#### Offset `*.*.OFFSET` [GET, SET]
 Set room offset (to place scene are and real-world play area in desired locations).
