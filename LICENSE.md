@@ -4,8 +4,7 @@
 #### Copyright (C) 2023 H1M4W4R1
 
 Everyone is permitted to copy and distribute verbatim or modified
-copies of this license document, and changing it is allowed as long
-as the name is changed.
+copies of this software.
  
 ### DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE   TERMS AND CONDITIONS FOR COPYING, DISTRIBUTION AND MODIFICATION
 
